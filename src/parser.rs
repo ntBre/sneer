@@ -72,6 +72,8 @@ fn molecule(s: &str) -> IResult<&str, (Atom, Vec<(Bond, Atom)>)> {
     tuple((atom, many0(pair(bond, atom))))(s)
 }
 
-pub fn parse(s: &str) -> IResult<&str, (Atom, Vec<(Bond, Atom)>)> {
-    molecule(s)
+pub fn parse(s: &str) -> (Atom, Vec<(Bond, Atom)>) {
+    let (remaining, ret) = molecule(s).unwrap();
+    assert!(remaining.is_empty());
+    ret
 }
