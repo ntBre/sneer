@@ -3,12 +3,15 @@ use parser::parse;
 mod parser;
 
 #[derive(Debug)]
+#[allow(unused)]
 struct Atom {
     atomic_number: Option<usize>,
     connectivity: Option<usize>,
     index: Option<usize>,
 }
 
+// TODO need to handle the logical operators. there may be multiple
+// atomic_numbers or connectivities separated by logical operators
 impl From<Vec<&str>> for Atom {
     fn from(fields: Vec<&str>) -> Self {
         let mut atomic_number = None;
@@ -44,6 +47,7 @@ fn take_digits(chars: &mut impl Iterator<Item = char>) -> String {
 }
 
 #[derive(Debug)]
+#[allow(unused)]
 struct Bond {
     order: usize,
     atom1: usize,
@@ -51,6 +55,7 @@ struct Bond {
 }
 
 #[derive(Debug, Default)]
+#[allow(unused)]
 struct Molecule {
     atoms: Vec<Atom>,
     bonds: Vec<Bond>,
