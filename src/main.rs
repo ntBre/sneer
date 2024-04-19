@@ -31,7 +31,8 @@ impl From<Vec<&str>> for Atom {
                 Some(':') => {
                     index = Some(take_digits(&mut chars).parse().unwrap());
                 }
-                t => todo!("parse `{t:?}` into Atom"),
+                Some(c) => todo!("parse `{c:?}` into Atom"),
+                None => {}
             }
         }
         Self {
