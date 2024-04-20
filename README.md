@@ -1,0 +1,2 @@
+# sneer
+SMIRKS pattern parsing
